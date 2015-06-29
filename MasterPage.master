@@ -1,0 +1,207 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!--Master Page Specific Meta Tags-->
+    <meta property="og:site_name" content="Celadon Trucking" />
+    <meta property="og:type" content="website" />
+
+    <%--TODO: SHOULD THESE LANGAUGE TAGS BE REMOVED. WHATS BEST WAY TO HANDLE THIS?--%>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US-IN" />
+    <meta name="geo.placename" content="Indianapolis" />
+    <meta name="geo.position" content="39.817409;-85.996882" />
+    <meta name="ICBM" content="39.817409, -85.996882" />
+    <!--End Master Page Specific Meta Tags-->
+
+    <title>Driver Portal</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/deepspace.css" rel="stylesheet" />
+    <link href="css/master-style.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <%--<link href="css/media.css" rel="stylesheet" />--%>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <div class="row nav-bottom-border">
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
+                        <div class="navbar-header">
+                            <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/public/default.aspx"  onclick="ga('send', 'event', 'link', 'header-top-home');" CssClass="menu-position">
+                                <asp:Image ID="celadonLogo" SkinID="HeaderLogo" AlternateText="Home" runat="server" CssClass="hidden-xs hidden-sm" />
+                            </asp:HyperLink>
+
+
+                            <%--Mobile Menu--%>
+                            <div class="row visible-xs text-center">
+                                <div class="col-xs-1 margin-left10">
+                                    <a href='<%= Page.ResolveUrl("~/public/mobile-menu-more.aspx")%>'><i class="glyphicon glyphicon-list-alt"></i>
+                                        <div class="mobile-menu-label">More</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-1 ">
+                                    <asp:Image ID="imgMobileMenuItemSeperator" runat="server" ImageUrl="~/img/mobile-menu-item-seperator.png" AlternateText="|" />
+                                </div>
+                                <div class="col-xs-1">
+                                    <a href='<%= Page.ResolveUrl("~/secure/contact-us.aspx")%>'><i class="glyphicon glyphicon-earphone"></i>
+                                        <div class="mobile-menu-label">Contact</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-1 ">
+                                    <asp:Image ID="imgMobileMenuItemSeperator1" runat="server" ImageUrl="~/img/mobile-menu-item-seperator.png" AlternateText="|" />
+                                </div>
+                                <div class="col-xs-1">
+                                    <a href='<%= Page.ResolveUrl("~/public/driver-lounge.aspx")%>'><i class="glyphicon glyphicon-thumbs-up"></i>
+                                        <div class="mobile-menu-label">Lounge</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-1">
+                                    <asp:Image ID="imgMobileMenuItemSeperator2" runat="server" ImageUrl="~/img/mobile-menu-item-seperator.png" AlternateText="|" />
+                                </div>
+                                <div class="col-xs-1">
+                                    <a href='<%= Page.ResolveUrl("~/secure/my-profile.aspx")%>'><i class="glyphicon glyphicon-user"></i>
+                                        <div class="mobile-menu-label">Profile</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-1">
+                                    <asp:Image ID="imgMobileMenuItemSeperator3" runat="server" ImageUrl="~/img/mobile-menu-item-seperator.png" AlternateText="|" />
+                                </div>
+                                <div class="col-xs-1">
+                                    <a href='<%= Page.ResolveUrl("~/secure/ss-company-driver.aspx")%>'><i class="glyphicon glyphicon-usd"></i>
+                                        <div class="mobile-menu-label">Pay</div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-1">
+                                    <asp:Image ID="imgMobileMenuItemSeperator4" runat="server" ImageUrl="~/img/mobile-menu-item-seperator.png" AlternateText="|" />
+                                </div>
+                                <div class="col-xs-1">
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target=".navbar-collapse"><i class="glyphicon glyphicon-list"></i>
+                                        <div class="mobile-menu-label">Menu</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <%--End Mobile Menu--%>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <asp:Repeater runat="server" ID="topmenucontainer" DataSourceID="SiteMapDataSource1">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <li class="dropdown">
+                                            <asp:HyperLink ID="HyperLink1" runat="server" cssclass="dropdown-toggle" data-toggle="dropdown" href="#" NavigateUrl='<%# Eval("Url") %>'><%# Eval("Title") %><span class="caret"></span></asp:HyperLink>
+
+                                            <asp:Repeater ID="Repeater1" runat="server" DataSource='<%#Container.DataItem.ChildNodes()%>'>
+                                                <HeaderTemplate>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <li>
+                                                        <asp:HyperLink ID="HyperLink2" runat="server" Target="_blank" NavigateUrl='<%# Eval("Url") %>'><%# Eval("Title") %></asp:HyperLink>
+                                                    </li>
+                                                </ItemTemplate>
+
+                                                <FooterTemplate>
+                                                    </ul>
+                                                </FooterTemplate>
+
+                                            </asp:Repeater>
+                                        </li>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                <li>
+                                    <asp:HyperLink ID="hldriverLounge" runat="server" Text="Lounge" Target="_blank" NavigateUrl="~/public/driver-lounge.aspx" SkinID="lounge" />
+                                </li>
+                                <li>
+                                    <asp:LoginStatus ID="LoginStatusTopMenu" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/public/login.aspx"  onclick="ga('send', 'event', 'button', 'action', 'mobile-menu-login-status');" />
+                                </li>
+                                <li>
+                                    <asp:Panel ID="pnlLangaugeSelection" runat="server" Visible="false">
+                                        <%--Not fully implemented yet--%>
+                                        <asp:ImageButton ID="ibLangaugeSpanish" runat="server" ImageUrl="~/img/language-mx.png" OnClick="ibLangaugeSpanish_Click" />
+                                        <asp:ImageButton ID="ibLanguageEnglish" runat="server" ImageUrl="~/img/language-us.png" OnClick="ibLanguageEnglish_Click" />
+                                    </asp:Panel>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="row">
+                <header class="jumbotron no-print visible-md visible-lg">
+                    <asp:Image ID="imgJumbotron" runat="server" Width="100%" />
+                </header>
+            </div>
+
+            <%--Client pages have their own rows--%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+
+            <div class="row visible-md visible-lg">
+                <div class="footer no-print">
+
+                    <div class="col-xs-12  col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-2 padding-top10">
+
+                        <asp:Label runat="server" SkinID="lblFooterAddress" />
+
+                    </div>
+
+                    <asp:Panel runat="server" ID="pnlSocialIcons" CssClass="col-xs-12 col-sm-3 col-md-3 padding-top10" SkinID="pnlSocialIcons">
+
+
+                        <a href="https://www.facebook.com/CeladonTrucking" target="_blank">
+                            <img src='<%= Page.ResolveClientUrl("~/img/social-media-icons/facebook.svg")%>' style="height: 20px;" alt="Facebook" title="Celadon Facebook" onclick="ga('send', 'event', 'link', 'icon-facebook');" class="footer-icon" /></a>
+
+                        <a href="https://twitter.com/Drive_Celadon/" target="_blank">
+                            <img src='<%= Page.ResolveClientUrl("~/img/social-media-icons/twitter.svg")%>' style="height: 20px;" alt="Twitter" title="Celadon Twitter" onclick="ga('send', 'event', 'link', 'icon-twitter');" class="footer-icon" /></a>
+
+                        <a href="https://www.linkedin.com/company/celadon-group-inc." target="_blank">
+                            <img src='<%= Page.ResolveClientUrl("~/img/social-media-icons/linkedin.svg")%>' style="height: 20px;" alt="Google Plus" title="Celadon Group Inc" onclick="ga('send', 'event', 'link', 'icon-linkedin');" class="footer-icon" /></a>
+
+                        <a href="http://www.youtube.com/user/CeladonTrucking" target="_blank">
+                            <img src='<%= Page.ResolveClientUrl("~/img/social-media-icons/youtube.svg")%>' style="height: 20px;" alt="Youtube" title="Celadon Youtube" onclick="ga('send', 'event', 'link', 'icon-youtube');" class="footer-icon" /></a>
+
+                    </asp:Panel>
+                </div>
+            </div>
+        </div>
+
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+    </form>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-38688002-28', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

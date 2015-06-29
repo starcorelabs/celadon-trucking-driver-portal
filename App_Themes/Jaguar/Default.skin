@@ -1,0 +1,30 @@
+﻿<%-- Celadon Theme --%>
+
+<asp:Button runat="server" CssClass="btn btn-skin-default"/>
+
+<asp:Image runat="server" ImageUrl="img/header-logo.svg" alt="Driver Portal" CssClass="hidden-xs hidden-sm" SkinID="HeaderLogo"/>
+
+<asp:Label runat="server" CssClass="footer-text" Text="Jaguar Transportation Services | +52 818 286 1150" SkinID="lblFooterAddress" />
+
+<asp:Label runat="server" skinid="lblLoadDriver" Text="Administration" />
+
+<asp:HyperLink runat="server" Text="Lounge" NavigateUrl="~/public/driver-lounge.aspx" Visible="false" SkinID="lounge"/>
+
+<asp:HyperLink runat="server" NavigateUrl="~/public/driver-lounge.aspx" SkinID="MoblieLounge" Visible="false"/>
+
+<asp:panel runat="server"  Visable="false" CssClass="hide-panel" SkinID="pnlSocialIcons"/>
+
+<asp:Panel runat="server" CssClass="hide-panel" SkinID="pnlUSATerminals"   Visible="false" />
+<asp:Panel runat="server" CssClass="hide-panel" SkinID="pnlCanadaTerminals"  Visible="false" />
+<asp:Panel runat="server" SkinID="pnlMexicoTerminals"  Visible="true" />
+
+<asp:Panel runat="server" SkinID="terminalMap" Visible="false" />
+
+<asp:Panel runat="server"  SkinID="pnlDocumentMessage" Visible="true" />
+
+<asp:Panel runat="server" SkinID="pnlDocuments" Visible="false" />
+
+<asp:Panel runat="server" SkinID="pnlLostTrailors" Visible="false" />
+
+<asp:Label runat="server"  SkinID="lblMainNumber" Visible="false" />
+<asp:Label runat="server"  SkinID="lblDriverRelations" Visible="false" /> 

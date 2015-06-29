@@ -1,0 +1,21 @@
+﻿<%-- Public Theme --%>
+
+<asp:Button runat="server" CssClass="btn btn-skin-default"/>
+
+<asp:Image runat="server" ImageUrl="img/header-logo.svg" alt="Driver Portal" CssClass="hidden-xs hidden-sm HeaderLogo" skinid="HeaderLogo"/>
+
+
+<asp:Label runat="server" CssClass="footer-text" Text="" Visable="false" skinid="lblFooterAddress" />
+
+<asp:Label runat="server"  Text="Administration" skinid="lblLoadDriver" />
+
+<asp:HyperLink runat="server" Text="Lounge" NavigateUrl="~/public/driver-lounge.aspx" Visible="false" SkinID="lounge" />
+
+<asp:panel runat="server"  Visable="false" CssClass="hide-panel" SkinID="pnlSocialIcons"/>
+
+
+<asp:Panel runat="server" SkinID="pnlUSATerminals"       Visible="true"/>
+<asp:Panel runat="server" SkinID="pnlCanadaTerminals"  Visible="true"/>
+<asp:Panel runat="server" SkinID="pnlMexicoTerminals"   Visible="true"/>
+
+<asp:Panel runat="server" SkinID="terminalMap" Visible="true"/>

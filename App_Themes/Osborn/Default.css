@@ -1,0 +1,113 @@
+
+/*hyndman style */
+
+.btn-skin-default {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-family: 'Armata', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #790002;
+    border-color: #000;
+}
+
+    .btn-skin-default:hover,
+    .btn-skin-default:focus,
+    .btn-skin-default:active {
+        color: #fff;
+        background-color: #FF7F00;
+        border-color: #285e8e;
+    }
+
+    .btn-skin-default:active,
+    .btn-skin-default.active,
+    .open .dropdown-toggle.btn-skin-default {
+        background-image: none;
+    }
+
+
+.btn-jumbotron {
+    font-family: 'Armata', sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13pt;
+    min-width: 170px;
+}
+
+.btn-center {
+    width: 150px;
+    margin: 0 auto 0 auto;
+}
+
+
+thead {
+    background-color: #790002;
+    color: #fff;
+}
+
+
+.label-color {
+    color: #790002;
+}
+
+
+.table-celadon-colors th {
+    background-color: #790002;
+    color: white;
+}
+
+
+.pivot-gridview th {
+    background-color: #790002 !important;
+    color: white;
+}
+
+
+.panel-default > .panel-heading {
+    color: #FFF;
+    background-color: #790002;
+    border-color: #790002;
+}
+
+
+
+.lblLoadDriver {
+    background: #790002; 
+    color: white;
+}
+
+
+.pivot-gridview-mobile {
+    color: #fff;
+    background-color: #790002;
+    text-align: left;
+}
+
+
+.glyphicon {
+    color: #790002;
+}
+
+.hide-panel {
+    visibility: hidden;
+}
+
+
+/* mobile icons text color */
+ul li a span {
+    color: #790002;
+}

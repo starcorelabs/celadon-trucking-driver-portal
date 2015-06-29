@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="International Map of Celadon Terminals" />
+    <title>Terminal Map Google</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"
+        type="text/javascript"></script>
+</head>
+<body>
+    <div id="map" style="width: 610px; height: 500px;"></div>
+
+    <script type="text/javascript">
+        var locations = [
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Tepotzotlán</div><div>Phone</div><div>01.552.229.0364</div></div>', 19.716629, -99.223113, 27],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Puebla</div><div>52.222.285.5073</div></div>', 19.046795, -98.209223, 26],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">San Luis Potosí</div><div>52.444.799.7268</div></div>', 22.15647, -100.985541, 25],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Tlalnepantla</div><div>52.555.718.0099</div></div>', 19.538988, -99.193281, 24],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Querétaro</div><div>52.442.368.1500</div></div>', 20.588793, -100.389888, 23],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Guadalajara</div><div>52.333.605.1805</div></div>', 20.659649, -103.349625, 22],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Monterrey</div><div>Carretera Monclova Km. 5</div><div>Col. Centro</div><div>General Escobedo, Nuevo Leon C.P. 66050</div><div>52.818.286.1150</div><div>01.800.236.5248</div></div>', 25.673211, -100.309201, 21],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Kitchener</div><div>280 Shoemaker St</div><div>Kitchener, ON, Canada</div><div>800.265.6467</div></div>', 43.401966, -80.466628, 20],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Wroxeter</div><div>1001 Belmore Line</div><div>Wroxeter, ON N0G 2X0, Canada</div><div>800.265.6467</div></div>', 43.869252, -81.154698, 19],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Richmond</div><div>5600 Midlothian Turnpike</div><div>Richmond, VA 23225</div><div>800.231.2697</div></div>', 37.506841, -77.500929, 18],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Horizon City</div><div>200 S. Darrington Rd.</div><div>Horizon City, TX 75165</div><div>800.735.6732</div></div>', 31.678714, -106.195991, 17],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Drums</div><div>46 S. Hunter Hwy</div><div>Drums, PA 18222</div><div>570.788.7060</div></div>', 41.019734, -75.964044, 16],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Battleboro</div><div>7301 US Hwy 301 N.</div><div>Battleboro, NC 27809</div><div>252.977.8888</div></div>', 36.067241, -77.748951, 15],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Warren</div><div>2847 E. 600 S.</div><div>Warren, IN 78045</div><div>260.375.3810</div></div>', 40.741021, -85.394297, 14],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Janesville</div><div>101 W. Venture Dr.</div><div>Janesville, WI</div><div>608.743.1333</div></div>', 42.638456, -89.011625, 13],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">El Paso</div><div>200 Darrington Rd.</div><div>El Paso, TX 79928</div><div>800.735.6732</div></div>', 31.678714, -106.195991, 12],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Laredo</div><div>8401 Killam Industrial Blvd.</div><div>Laredo, TX 78045</div><div>800.735.6730</div></div>', 27.616817, -99.513691, 11],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Carlisle</div><div>1711 Shearer Dr.</div><div>Carlisle, PA 17013</div><div>800.431.8450</div></div>', 40.19377, -77.237681, 10],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Greensboro</div><div>4416 Groometown Rd.</div><div>Greensboro, NC 27407</div><div>800.996.7171</div></div>', 35.995004, -79.865606, 9],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Columbus</div><div>15200 S. Jonesville Rd #1</div><div>Columbus, IN 47201</div><div>800.456.3388</div></div>', 39.068707, -85.883794, 8],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Hampton</div><div>2501 60th St.</div><div>Hampton, VA 23661</div><div>800.347.1037</div></div>', 37.015369, -76.39804, 7],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Waxahachie</div><div>7240 N. Interstate Hwy 35 E.</div><div>Waxahachie, TX 75165</div><div>866.369.8001</div></div>', 32.484173, -96.828615, 6],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Knoxville</div><div>5651 S. National Dr.</div><div>Knoxville, TN 37914</div><div>800.956.3846</div></div>', 35.950147, -83.825914, 5],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Obetz</div><div>2499 Mcgaw Road</div><div>Obetz, OH 43207</div><div>800.523.1111</div></div>', 39.866215, -82.938037, 4],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Greenwood</div><div>790 Commerce Pkwy W. Dr.</div><div>Greenwood, IN 46143</div><div>888.736.1934</div></div>', 39.606261, -86.066131, 3],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">North Little Rock</div><div>330 Mid State Truck Plaza</div><div>North Little Rock, AR 72117</div><div>888.202.3569</div></div>', 34.779831, -92.201128, 2],
+          ['<div style="font-family: Arial; font-size: small;"><div class="HeaderTwo16A">Celadon Corporate Office</div><div>9503 East 33rd Street</div><div>Indianapolis, IN 46235 - 4207</div><div>800.235.2366</div><div>317.972.7000</div></div>', 39.817409, -85.996882, 1]
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: new google.maps.LatLng(33.640062, -94.398994),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38688002-28']);
+        _gaq.push(['_setDomainName', 'celadontrucking.com']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+</html>
