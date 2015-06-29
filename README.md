@@ -11,6 +11,7 @@
 * We are using Bootstrap 3 and custom media queries.
 * The files are standard HTML5, CSS3, JavaScript, and jQuery.
 * This project was built in ASP.Net 4.0 and VB. The database was an AS400 system and a SQL server. 
+* Please check the screen shots folder to view how the pages look as this project is not build-able.
 
 ### Contribution guidelines ###
 
