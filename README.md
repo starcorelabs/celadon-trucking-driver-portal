@@ -1,4 +1,5 @@
 # README #
+![Driver Portal](https://github.com/starcorelabs/celadon-trucking-driver-portal/blob/master/screenshots/2014-11-14%2008_38_18-Driver%20Portal.png)
 
 ### What is this repository for? ###
 
